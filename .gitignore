@@ -1,7 +1,7 @@
 *.pdf
-*.bib
 *.aux
 *.aux
 *.xml
 *.log
 */auto/*
+*.bib
