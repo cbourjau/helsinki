@@ -41,10 +41,19 @@ eprint=false
 \item Which polarity of bias voltage do you apply and why?
 \end{itemize}
 
-Semiconductor sensors are omnipresent in the field of particle physics. They are also deployed in areas exhibiting a large dose of radiation like the inner tracking system of collider based experiments. Therefore, it is crucial to understand the electrical properties and the response to radiation of these kind of detectors. This laboratory exercise explores the  properties of Si based sensors by measuring the current and capacity of these devices as a function of the applied reverse bias $V$. These measurements allow us to determine the depletion voltage of the given samples as well as to qualitatively observe the effect of radiation.
+\section{Introduction}
+\label{sec:introduction}
 
-Applying and increasing a $V$ to a diode will lead to a growing depletion region until the entire volume of a pn-junction is free of free charge carriers. At this point, $V_{fd}$, the diode is said to be fully depleted.
-The depleted volume is free of charge carriers and hence acts as an insulator in an electric field. $V_{fd}$ depends on the geometry and material of the diode. Assuming a flat pn-junction, $V_{fd}$ is given by
+Semiconductor sensors are omnipresent in the field of particle physics.
+They are also deployed in areas exhibiting a large dose of radiation like the inner tracking system of collider based experiments.
+Therefore, it is crucial to understand the electrical properties and the response to radiation of these kind of detectors.
+This laboratory exercise explores the  properties of Si based sensors by measuring the current and capacity of these devices as a function of the applied reverse bias $V$.
+These measurements allow us to determine the depletion voltage of the given samples as well as to qualitatively observe the effect of radiation.
+
+Applying and increasing a $V$ to a diode will lead to a growing depletion region until the entire volume of a pn-junction is free of free charge carriers.
+At this point, $V_{fd}$, the diode is said to be fully depleted.
+The depleted volume is free of charge carriers and hence acts as an insulator in an electric field. $V_{fd}$ depends on the geometry and material of the diode.
+Assuming a flat pn-junction, $V_{fd}$ is given by
 \begin{equation}
   \label{Vfd}
   V_{fd} = \frac{qN_{eff}d^2}{2\epsilon_0\epsilon_r}
@@ -54,17 +63,55 @@ The depleted region represents the active volume used for detection an its size 
 Furthermore, the presence two oppositely charged surfaces separated by an insulator represent the geometry of a parallel plate capacitor. Thus, the capacity of the depleted diode can be expressed, using \eqref{Vfd}, as
 \begin{equation}
   \label{C}
-  C = \frac{\epsilon_{0}\epsilon_{r}A}{d} = A \sqrt{\frac{\epsilon_0\epsilon_rqN_{eff}}{2V}}
+  C = \frac{\epsilon_{0}\epsilon_{r}A}{d}
 \end{equation}
-where $A$ is the area of one of the boundaries of the depleted region.
-
-However, due to thermal excitations within the depleted region, a so-called leakage current $I$ will be present if $V$ is applied to the diode. Apart from $V$, $I$ also depends on the abundance of impurities in the depleted region and is thus subject to radiation damage. 
+where $A$ is the area of one of the boundaries of the depleted region. Since the capacity is governed by $d$ it will only increase with the applied $V$ until the diode is fully depleted. For $V \geq V_{fd}$, the capacity of the diode is given by
+\begin{equation}
+  \label{eq:1}
+   C_{fd} = A \sqrt{\frac{\epsilon_0\epsilon_rqN_{eff}}{2V}}
+\end{equation}
+However, due to thermal excitations within the depleted region, a so-called leakage current $I$  us present whenever $V$ is applied to the diode.
+At full depletion, the leakage current only depends on the rate at which electron-hole pairs are generated. Thus, $I(V)$ is exhibiting a plateau for $V>V_{fd}$.
 
 \section{Samples and measurement}
 \label{sec:samples}
+During this exercise, the current-voltage and capacity-voltage relation of three different diodes were studied. While all samples were Si based, they differed in the type of doping used in their bulk region and in their exposure to radiation.
+At our disposal, we had one non-irradiated p-type diode, one non-irradiated n-type diode and a irradiated n-type diode. The radiation was applied by syncrotron radiation. 
+
+The measurements were conducted in a clean room environment. 
+Connection to the anode and cathode of a diode were achieved by placing a probe needle onto the sample.
+The polarity of the applied voltage was chose to be reverse to the diode, causing the creation of a depletion region.
+Furthermore, the experiment was shielded from light in order to avoid charges building up due to the photoelectric effect. Subsequently, the current $I$ and capacity $C$ of the diodes were measured over a range of different voltages $V$. Each measurement was repeated 3 times in order to minimize statistical fluctuations and to investigate the systematic error of the experimental setup.
+
+The diodes were scanned limited voltage ranges in order to avoid creating an avalanche discharge due to a thermal electron-hole pairs.
 
 \section{Results}
+Fig.~\ref{fig:cv} displays the  diodes' inversed and squared capacity $C$ and the applied voltage $V$.
+A flattening out of $1/C^2$ can be observed for all three diodes.
+However, large deviation between the successive measurements was observed for the p-typed diode.These might have been caused by residual charges slowly draining in between successive measurements.
+Therefore, the absolute value of the capacity cannot be relied upon, but the the shape is reproducible between different measurements.
+$V_{fd}$ is estimated by fitting a linear function to the rising region and the plateaued one. The intersection of the two functions is defined as $V_{fd}$.
+Under this definition, it becomes clear that the radiation damage of the n-doped diode cause a decrease in $V_{fd}$.
 \label{sec:results}
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{./figures/cv.pdf}  
+  \caption{Capacity-Voltage }
+  \label{fig:cv}
+\end{figure}
+
+Fig.~\ref{fig:iv} displays the diodes' $I$-$V$ curves whereas the shaded area represent the spread observed in the three measurements.
+The voltage ranges are identical with the ones used in the $C-V$ measurement.
+The flattening of $I$ for $V>V_{fd}$ can clearly be seen in the n-doped samples.
+Furthermore, the effect of the radiation damage is striking.
+The leakage current increased by $\sim 3$ orders of magnitude compared to the non-irradiated n-typed diode.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{./figures/iv.pdf}
+  \caption{Current-voltage}
+  \label{fig:iv}
+\end{figure}
 
 \section{Summary}
 \label{sec:summary}
