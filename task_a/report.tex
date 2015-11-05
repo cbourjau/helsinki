@@ -2,6 +2,7 @@
 
 \usepackage{graphicx,amsmath,amssymb,subfigure,url,xspace,textcomp,booktabs,siunitx,
   todonotes}
+\usepackage{todonotes}
 \usepackage[utf8]{inputenc}
 \usepackage[bf]{caption}
 \usepackage[
@@ -24,11 +25,51 @@ eprint=false
 \newcommand{\bigie}{I.e.,\xspace}
 
 
-\title{}
+\title{Measurement of electrical properties (current-voltage and capacitance-voltage) of irradiated and non-irradiated silicon detectors}
 \author{Michael Larson, Elisabeth Unger, Samuel Flis, Christian Bourjau}
 
 \begin{document}
 \maketitle
+\begin{itemize}
+\item Give a brief description of the setup and measurements.
+\item Plot capacitance and leakage current in function of applied bias voltage for all samples.
+\item Determine depletion voltage for all samples.
+\item Compare the leakage current at a fixed voltage (e.g. 50 V) for all samples in one plot.
+\item Describe the changes in behaviour of the irradiated detector.
+\item Why it is important to measure leakage current?
+\item What kind of information about the detector can be obtained from the CV data? From IV data?
+\item Which polarity of bias voltage do you apply and why?
+\end{itemize}
+
+Semiconductor sensors are omnipresent in the field of particle physics. They are also deployed in areas exhibiting a large dose of radiation like the inner tracking system of collider based experiments. Therefore, it is crucial to understand the electrical properties and the response to radiation of these kind of detectors. This laboratory exercise explores the  properties of Si based sensors by measuring the current and capacity of these devices as a function of the applied reverse bias $V$. These measurements allow us to determine the depletion voltage of the given samples as well as to qualitatively observe the effect of radiation.
+
+Applying and increasing a $V$ to a diode will lead to a growing depletion region until the entire volume of a pn-junction is free of free charge carriers. At this point, $V_{fd}$, the diode is said to be fully depleted.
+The depleted volume is free of charge carriers and hence acts as an insulator in an electric field. $V_{fd}$ depends on the geometry and material of the diode. Assuming a flat pn-junction, $V_{fd}$ is given by
+\begin{equation}
+  \label{Vfd}
+  V_{fd} = \frac{qN_{eff}d^2}{2\epsilon_0\epsilon_r}
+\end{equation}
+where $q$ is the elementary charge ($\SI{1.6e-19}{C}$), $N_{eff}$ is the effective charge density at the boundary of the deleted region, $d$ is the length of the depleted region and $\epsilon_0 = \SI{8.85e-12}{F/m}$ is the vacuum permittivity and $\epsilon_r$ is the permittivity of the material in the depleted region ($\epsilon_r^{Si} = 11.68$)\todo{add source}.
+The depleted region represents the active volume used for detection an its size $d$ can be deduced by rearranging\eqref{Vfd}. 
+Furthermore, the presence two oppositely charged surfaces separated by an insulator represent the geometry of a parallel plate capacitor. Thus, the capacity of the depleted diode can be expressed, using \eqref{Vfd}, as
+\begin{equation}
+  \label{C}
+  C = \frac{\epsilon_{0}\epsilon_{r}A}{d} = A \sqrt{\frac{\epsilon_0\epsilon_rqN_{eff}}{2V}}
+\end{equation}
+where $A$ is the area of one of the boundaries of the depleted region.
+
+However, due to thermal excitations within the depleted region, a so-called leakage current $I$ will be present if $V$ is applied to the diode. Apart from $V$, $I$ also depends on the abundance of impurities in the depleted region and is thus subject to radiation damage. 
+
+\section{Samples and measurement}
+\label{sec:samples}
+
+\section{Results}
+\label{sec:results}
+
+\section{Summary}
+\label{sec:summary}
+
+
 
 \printbibliography
 
