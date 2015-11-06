@@ -59,8 +59,8 @@ Assuming a flat pn-junction, $V_{fd}$ is given by
   V_{fd} = \frac{qN_{eff}d^2}{2\epsilon_0\epsilon_r}
 \end{equation}
 where $q$ is the elementary charge ($\SI{1.6e-19}{C}$), $N_{eff}$ is the effective charge density at the boundary of the deleted region, $d$ is the length of the depleted region and $\epsilon_0 = \SI{8.85e-12}{F/m}$ is the vacuum permittivity and $\epsilon_r$ is the permittivity of the material in the depleted region ($\epsilon_r^{Si} = 11.68$)\todo{add source}.
-The depleted region represents the active volume used for detection an its size $d$ can be deduced by rearranging\eqref{Vfd}. 
-Furthermore, the presence two oppositely charged surfaces separated by an insulator represent the geometry of a parallel plate capacitor. Thus, the capacity of the depleted diode can be expressed, using \eqref{Vfd}, as
+The depleted region represents the active volume used for detection and its size $d$ can be deduced by rearranging\eqref{Vfd}. 
+Furthermore, the presence of two oppositely charged surfaces separated by an insulator provides the geometry of a parallel plate capacitor. Thus, the capacity of the depleted diode can be expressed, using \eqref{Vfd}, as
 \begin{equation}
   \label{C}
   C = \frac{\epsilon_{0}\epsilon_{r}A}{d}
@@ -70,28 +70,30 @@ where $A$ is the area of one of the boundaries of the depleted region. Since the
   \label{eq:1}
    C_{fd} = A \sqrt{\frac{\epsilon_0\epsilon_rqN_{eff}}{2V}}
 \end{equation}
-However, due to thermal excitations within the depleted region, a so-called leakage current $I$  us present whenever $V$ is applied to the diode.
-At full depletion, the leakage current only depends on the rate at which electron-hole pairs are generated. Thus, $I(V)$ is exhibiting a plateau for $V>V_{fd}$.
+However, due to thermal excitations within the depleted region, a leakage current is present whenever a voltage is applied to the diode.
+At full depletion, the leakage current only depends on the rate at which electron-hole pairs are generated. Thus, $I(V)$ exhibits a plateau for $V>V_{fd}$.
 
 \section{Samples and measurement}
 \label{sec:samples}
 During this exercise, the current-voltage and capacity-voltage relation of three different diodes were studied. While all samples were Si based, they differed in the type of doping used in their bulk region and in their exposure to radiation.
-At our disposal, we had one non-irradiated p-type diode, one non-irradiated n-type diode and a irradiated n-type diode. The radiation was applied by syncrotron radiation. 
+Presented here are the measurements of a non-irradiated p-type diode, a non-irradiated n-type diode and a second n-type diode irradiated by syncrotron radiation. 
 
 The measurements were conducted in a clean room environment. 
-Connection to the anode and cathode of a diode were achieved by placing a probe needle onto the sample.
-The polarity of the applied voltage was chose to be reverse to the diode, causing the creation of a depletion region.
-Furthermore, the experiment was shielded from light in order to avoid charges building up due to the photoelectric effect. Subsequently, the current $I$ and capacity $C$ of the diodes were measured over a range of different voltages $V$. Each measurement was repeated 3 times in order to minimize statistical fluctuations and to investigate the systematic error of the experimental setup.
+Connection to the anode and cathode of each diode were achieved by placing a probe needle onto the sample.
+The polarity of the applied voltage was selected to be opposite that of the diode, causing the creation of a depletion region.
+Furthermore, the experiment was shielded from light to avoid charge buildup due to the photoelectric effect. Subsequently, the current and capacity of the diodes were measured over a range of different voltages. Each measurement was repeated 3 times in order to minimize statistical fluctuations and to investigate the systematic error of the experimental setup.
 
-The diodes were scanned limited voltage ranges in order to avoid creating an avalanche discharge due to a thermal electron-hole pairs.
+The diodes were scanned over a limited voltage range in order to avoid creating an avalanche discharge due to a thermal electron-hole pairs.
 
 \section{Results}
-Fig.~\ref{fig:cv} displays the  diodes' inversed and squared capacity $C$ and the applied voltage $V$.
-A flattening out of $1/C^2$ can be observed for all three diodes.
-However, large deviation between the successive measurements was observed for the p-typed diode.These might have been caused by residual charges slowly draining in between successive measurements.
-Therefore, the absolute value of the capacity cannot be relied upon, but the the shape is reproducible between different measurements.
-$V_{fd}$ is estimated by fitting a linear function to the rising region and the plateaued one. The intersection of the two functions is defined as $V_{fd}$.
-Under this definition, it becomes clear that the radiation damage of the n-doped diode cause an increase in $V_{fd}$: from \SI{28.43}{V} (not irradiated) to \SI{63.79}{V} (irradiated).
+Fig.~\ref{fig:cv} displays the diodes' inverse squared capacitance, $\frac{1}{C^{-2}}$ and the applied voltage $V$.
+A plateau of $1/C^2$ can be observed for all three diodes.
+However, large deviations between the successive measurements was observed for the p-typed diode. These might have been caused by residual charges slowly draining in between successive measurements.
+Discussions with more experienced collegues indicated that the equipment has known inaccuracies when measuring small capacitances of order of $\sim pF$. The absolute scale of the capacitance therefore cannot be relied upon, but the shape is reproducible between different measurements.
+$V_{fd}$ is estimated by fitting linear functions to the rising and plateaued regions. 
+
+ The intersection of the two functions is defined as $V_{fd}$.
+Under this definition, it becomes clear that the radiation damage of the n-doped diode causes an increase in $V_{fd}$: from \SI{25.16\pm0.20}{V} (not irradiated) to \SI{63.04\pm2.90}{V} (irradiated).
 \label{sec:results}
 \begin{figure}
   \centering
@@ -118,9 +120,8 @@ The leakage current increased by $\sim 3$ orders of magnitude compared to the no
 The $C-V$ and $I-V$ curves of three different diodes were successfully measured.
 While the scale of $C$ was found to not be reliable, their shapes were reproducible in repeated measurements.
 Based on these shapes it was possible to determine $V_{fd}$ for each diode and to observe the plateau in both curves for $V>V_{fd}$.
-Radiation damage was found to cause an increase in $V_{fd}$ by a factor of $\sim 3$ and  $I$ by a three orders of magnitude.
+Radiation damage was found to cause an increase in $V_{fd}$ by a factor of $\sim 3$ and $I$ by a three orders of magnitude.
 This significant increase of the leakage current causes a deterioration of the signal-to-noise ratio in particle detectors.
-
 
 \printbibliography
 
