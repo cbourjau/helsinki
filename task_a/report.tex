@@ -91,29 +91,43 @@ The full depletion voltage is estimated by fitting linear functions to the risin
 The intersection of the two functions is defined as $V_{fd}$.
 Under this definition, it becomes clear that the radiation damage of the n-doped diode causes an increase of the full depletion voltage $V_{fd}$ from $25.16\pm0.20$ V (not irradiated) to $63.04\pm2.90$ V (irradiated).
 
+% \begin{table}[]
+% %\centering
+% \caption{Summary of the results obtained from the CV and IV measurements.}
+% \begin{tabular}{lllll}
+% \toprule
+% Sample type         & \multicolumn{2}{l}{Undepleted Region} & \multicolumn{2}{l}{Depleted Region}                                                          \\
+%                     & Slope ($10^{-6}pF^{-2}V^{-1}$)        & Intercept ($10^{-3}pF^{-2}$) & Slope ($10^{-6}pF^{-2}V^{-1}$) & Intercept ($10^{-3}pF^{-2}$) \\
+% \midrule
+% P-Type              & 7.7$\pm$4.6                           & 37.3$\pm$0.8                 & 441.9$\pm$23.5                 & 5.0$\pm$0.3                  \\
+% N-Type              & 22.6$\pm$4.9                          & 7.3$\pm$0.4                  & 171.7$\pm$2.7                  & -2.1$\pm$0.1                 \\
+% N-Type (Irradiated) & 12.4$\pm$37.5                         & 58.0$\pm$3.0                 & 1978.6$\pm$110.3               &                              \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
 
-\begin{table}[]
-\centering
-\begin{tabular}{lllll}
-                               & \multicolumn{2}{l}{Undepleted Region}                                                                                               & \multicolumn{2}{l}{Depleted Region}                                                                                                \\
-                               & Slope ($10^{-6}pF^{-2}V^{-1}$)) & Intercept ($10^{-3}pF^{-2}$) & Slope ($10^{-6}pF^{-2}V^{-1}$) & Intercept ($10^{-3}pF^{-2}$) \\
-Sample 8, P-Type               & 7.7$\pm$4.6                                                                 & 37.3$\pm$0.8                                              & 441.9$\pm$23.5                                                             & 5.0$\pm$0.3                                               \\
-Sample 12, N-Type              & 22.6$\pm$4.9                                                                & 7.3$\pm$0.4                                               & 171.7$\pm$2.7                                                              & -2.1$\pm$0.1                                              \\
-Sample 18, N-Type (Irradiated) & 12.4$\pm$37.5                                                               & 58.0$\pm$3.0                                              & 1978.6$\pm$110.3                                                           &                                                        
-\end{tabular}
+\begin{table}
+  \caption{Summary of measured values at the point of full depletion. The capacity is not shown since the absolute value proved to be unreliable.}\label{tab:results}
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    Sample type         & $V_{fd}$                 & $I(V_{fd})$ \\
+    \midrule
+    P-type              & $74.4 \pm 2.1 \si{V}$   &           \\
+    N-type              & $25.2 \pm 0.2 \si{V}$  &             \\
+    N-type (irradiated) & $63.0 \pm 2.9 \si{V}$ &             \\
+    \bottomrule
+  \end{tabular}
 \end{table}
 
  The intersection of the two functions is defined as $V_{fd}$.
 Under this definition, it becomes clear that the radiation damage of the n-doped diode causes an increase in $V_{fd}$: from \SI{25.16\pm0.20}{V} (not irradiated) to \SI{63.04\pm2.90}{V} (irradiated).
 
-
-
 \label{sec:results}
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{./figures/cv.pdf}  
-  \caption{capacitance-Voltage }
-  \label{fig:cv}
+  \caption{capacitance-Voltage }\label{fig:cv}
 \end{figure}
 
 Figure \ref{fig:iv} shows the diodes' $I$-$V$ curves where the shaded area represent the spread observed in the three measurements.
