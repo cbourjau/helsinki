@@ -40,7 +40,7 @@ Therefore, it is crucial to understand the electrical properties and the respons
 This laboratory exercise explores the  properties of Silicon (Si) based sensors by measuring the current and capacitance of these devices as a function of the applied reverse bias.
 These measurements allow us to determine the depletion voltage of the given samples as well as to qualitatively observe the effect of radiation.
 
-Applying and increasing a voltage to a diode will lead to a growing depletion region until free charge carries are absent in the entire volume of a pn-junction. Hence, the at this point fully depleted volume as an insulator in an electric field. The full depletion voltage $V_{fd}$ depends on the geometry and material of the diode and is given by 
+Applying and increasing a voltage to a diode will lead to a growing depletion region until free charge carriers are absent in the entire volume of a pn-junction. Hence, the at this point fully depleted volume works as an insulator in an electric field. The full depletion voltage $V_{fd}$ depends on the geometry and material of the diode and is given by 
 
 \begin{equation}
   \label{Vfd}
@@ -56,7 +56,7 @@ Furthermore, the presence of two oppositely charged surfaces separated by an ins
   C = \frac{\epsilon_{0} ~ \epsilon_{r} ~ A}{d}
 \end{equation}
 
-where $A$ is the area of one of the boundaries of the depleted region. Since the capacitance is governed by $d$ it will only increase with the applied voltage $V$ until the diode is fully depleted. For $V \geq V_{fd}$, the capacitance of the diode is given by
+where $A$ is the area of one of the boundaries of the depleted region. Since the capacitance is governed by the size $d$ it will only increase with the applied voltage $V$ until the diode is fully depleted. For $V \geq V_{fd}$, the capacitance of the diode is given by
 
 \begin{equation}
   \label{eq:1}
@@ -84,12 +84,12 @@ The diodes were scanned over a limited voltage range in order to avoid the creat
 
 In figure \ref{fig:cv} the diodes' inverse squared capacitance, $\frac{1}{C^{-2}}$ and the applied voltage $V$ is displayed.
 A plateau of $1/C^2$ can be observed for all three diodes.
-However, large deviations between the successive measurements was observed for the p-typed diode. These might have been caused by residual charges slowly draining in between successive measurements.
+However, large deviations between the successive measurements were observed for the p-typed diode. These might have been caused by residual charges slowly draining in between successive measurements.
 Discussions with more experienced colleagues indicated that the equipment has known inaccuracies when measuring small capacitances of order of $\sim pF$. Therefore the absolute scale of the capacitance cannot be relied upon, but the shape is reproducible between different measurements.
 The full depletion voltage is estimated by fitting linear functions to the rising and plateaued regions. 
 
-The intersection of the two functions is defined as $V_{fd}$.
-Under this definition, it becomes clear that the radiation damage of the n-doped diode causes an increase of the full depletion voltage $V_{fd}$ from $25.16\pm0.20$ V (not irradiated) to $63.04\pm2.90$ V (irradiated).
+The intersection of the two functions is defined as the full depletion voltage $V_{fd}$.
+Under this definition, it becomes clear that the radiation damage of the n-doped diode causes an increase of $V_{fd}$ from $25.16\pm0.20$ V (not irradiated) to $63.04\pm2.90$ V (irradiated).
 
 % \begin{table}[]
 % %\centering
@@ -120,13 +120,12 @@ Under this definition, it becomes clear that the radiation damage of the n-doped
   \end{tabular}
 \end{table}
 
- The intersection of the two functions is defined as $V_{fd}$.
-Under this definition, it becomes clear that the radiation damage of the n-doped diode causes an increase in $V_{fd}$: from \SI{25.16\pm0.20}{V} (not irradiated) to \SI{63.04\pm2.90}{V} (irradiated).
+
 
 \label{sec:results}
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{./figures/cv.pdf}  
+  \includegraphics[width=0.8\textwidth]{./figures/cv.pdf}  
   \caption{capacitance-Voltage }\label{fig:cv}
 \end{figure}
 
@@ -138,7 +137,7 @@ The leakage current increased by about three orders of magnitude compared to the
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{./figures/iv.pdf}
+  \includegraphics[width=0.8\textwidth]{./figures/iv.pdf}
   \caption{Current-voltage}
   \label{fig:iv}
 \end{figure}
