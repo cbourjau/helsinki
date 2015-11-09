@@ -34,20 +34,21 @@ eprint=false
 \label{sec:introduction}
 
 Semiconductor sensors are omnipresent in the field of particle physics.
-They are also deployed in areas exhibiting a large dose of radiation like the inner tracking system of collider based experiments.
+They are also deployed in areas exhibiting a large dose of radiation like the inner tracking systems of collider based experiments.
 Therefore, it is crucial to understand the electrical properties and the response to radiation of these kind of detectors.
 This laboratory exercise explores the  properties of Silicon (Si) based sensors by measuring the current and capacitance of these devices as a function of the applied reverse bias.
 These measurements allow us to determine the depletion voltage of the given samples as well as to qualitatively observe the effect of radiation.
 
-Applying and increasing a voltage to a diode will lead to a growing depletion region until free charge carriers are absent in the entire volume of a pn-junction. Hence, the at this point fully depleted volume works as an insulator in an electric field. The full depletion voltage $V_{fd}$ depends on the geometry and material of the diode and is given by 
+Applying and increasing a reverse voltage to a diode will lead to a growing depletion region until free charge carriers are absent in the entire volume of a pn-junction.
+Hence, the at this point fully depleted volume works as an insulator in an electric field. The full depletion voltage $V_{fd}$ depends on the geometry and material of the diode and is given by 
 
 \begin{equation}
   \label{Vfd}
   V_{fd} = \frac{q ~ N_{eff} ~ d^2}{2 ~ \epsilon_0 ~ \epsilon_r}
 \end{equation}
 
-where $q$ is the elementary charge ($\SI{1.6e-19}{C}$), $N_{eff}$ is the effective charge density at the boundary of the depleted region, $d$ is the length of the depleted region and $\epsilon_0 = \SI{8.85e-12}{F/m}$ is the vacuum permittivity and $\epsilon_r$ is the permittivity of the material in the depleted region ($\epsilon_r^{Si} = 11.68$)\todo{add source}.
-The depleted region represents the active volume used for detection and its size $d$ can be deduced by rearranging \eqref{Vfd}. 
+where $q$ is the elementary charge ($\SI{1.6e-19}{C}$), $N_{eff}$ is the effective charge density at the boundary of the depleted region, $d$ is the length of the depleted region and $\epsilon_0 = \SI{8.85e-12}{F/m}$ is the vacuum permittivity and $\epsilon_r$ is the permittivity of the material in the depleted region ($\epsilon_r^{Si} = 11.68$)\cite{cv_iv_manual}.
+The depleted region represents the active volume used for detection and its size $d$ can be deduced by rearranging \eqref{Vfd}.
 Furthermore, the presence of two oppositely charged surfaces separated by an insulator provides the geometry of a parallel plate capacitor. Thus, the capacitance of the depleted diode can be expressed, using \eqref{Vfd}, as
 
 \begin{equation}
@@ -125,10 +126,10 @@ Under this definition, it becomes clear that the radiation damage of the n-doped
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{./figures/cv.pdf}  
-  \caption{capacitance-Voltage }\label{fig:cv}
+  \caption{Capacitance $C$ vs.\ applied voltage $V$ for the three studied samples. Each sample was measured three times. Note that the absolute values of the capacitance proofed to be unreliable in between consecutive measurements. The full depletion voltage $V_{fd}$ was unaffected by this circumstance and was specified by the intersection point of the linear fits of the rising and the plateaued region.}\label{fig:cv}
 \end{figure}
 
-Figure \ref{fig:iv} shows the diodes' $I$-$V$ curves where the shaded area represent the spread observed in the three measurements.
+Figure~\ref{fig:iv} shows the diodes' $I$-$V$ curves where the shaded area represent the spread observed in the three measurements.
 The voltage ranges are identical with the ones used in the $C$-$V$ measurement.
 The flattening of the current $I$ for $V>V_{fd}$ can be seen clearly in the n-doped samples.
 Furthermore, the effect of the radiation damage is striking.
@@ -137,8 +138,7 @@ The leakage current increased by about three orders of magnitude compared to the
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{./figures/iv.pdf}
-  \caption{Current-voltage}
-  \label{fig:iv}
+  \caption{Current $I$ vs.\ applied voltage $V$ for the three studied samples. The depletion point $V_{fd}$ as extracted from the capacity-voltage measurement is depicted with the dashed line. Note the significantly higher current in case of the radiated sample.}\label{fig:iv}
 \end{figure}
 
 
