@@ -47,7 +47,7 @@ Hence, the at this point fully depleted volume works as an insulator in an elect
   V_{fd} = \frac{q ~ N_{eff} ~ d^2}{2 ~ \epsilon_0 ~ \epsilon_r}
 \end{equation}
 
-where $q$ is the elementary charge ($\SI{1.6e-19}{C}$), $N_{eff}$ is the effective charge density at the boundary of the depleted region, $d$ is the length of the depleted region and $\epsilon_0 = \SI{8.85e-12}{F/m}$ is the vacuum permittivity and $\epsilon_r$ is the permittivity of the material in the depleted region ($\epsilon_r^{Si} = 11.68$)\cite{cv_iv_manual}.
+where $q$ is the elementary charge (1.6e-19C), $N_{eff}$ is the effective charge density at the boundary of the depleted region, $d$ is the length of the depleted region and $\epsilon_0 = 8.85e-12$ F/m is the vacuum permittivity and $\epsilon_r$ is the permittivity of the material in the depleted region ($\epsilon_r^{Si} = 11.68$ F/m)\cite{cv_iv_manual}.
 The depleted region represents the active volume used for detection and its size $d$ can be deduced by rearranging \eqref{Vfd}.
 Furthermore, the presence of two oppositely charged surfaces separated by an insulator provides the geometry of a parallel plate capacitor. Thus, the capacitance of the depleted diode can be expressed, using \eqref{Vfd}, as
 
@@ -82,7 +82,7 @@ The diodes were scanned over a limited voltage range in order to avoid the creat
 
 \section*{Results}
 
-In figure \ref{fig:cv} the diodes' inverse squared capacitance, $\frac{1}{C^{-2}}$ and the applied voltage $V$ is displayed.
+In Figure \ref{fig:cv} the diodes' inverse squared capacitance, $\frac{1}{C^{-2}}$ and the applied voltage $V$ is displayed.
 A plateau of $1/C^2$ can be observed for all three diodes.
 However, large deviations between the successive measurements were observed for the p-typed diode. These might have been caused by residual charges slowly draining in between successive measurements.
 Discussions with more experienced collegues indicated that the equipment has known inaccuracies when measuring small capacitances of order of $\sim pF$. The absolute scale of the capacitance is unreliable, but the shape is reproducible between different measurements.
@@ -90,16 +90,16 @@ $V_{fd}$ is estimated by fitting linear functions to the rising and plateaued re
 
 \begin{table}[]
 \centering
-\caption{Linear fit parameters for two sections of the CV curves of each sample.}\label{tab:fits}
+\caption{Linear fit parameters for two sections of the CV curves of each sample. Slopes are given in units of $10^{-6}pF^{-2}V^{-1}$ and intercepts are in units of $10^{-3}pF^{-2}$.}\label{tab:fits}
 \begin{tabular}{lllll}
     \toprule
-    & \multicolumn{2}{l}{Undepleted Region}   & \multicolumn{2}{l}{Depleted Region}  \\
+    & \multicolumn{2}{c}{Undepleted Region}   & \multicolumn{2}{c}{Depleted Region}  \\
     \midrule
-    & Slope ($10^{-6}pF^{-2}V^{-1}$)) & Intercept ($10^{-3}pF^{-2}$) & Slope ($10^{-6}pF^{-2}V^{-1}$) & Intercept ($10^{-3}pF^{-2}$) \\
+    & Slope & Intercept & Slope & Intercept \\
     \midrule
-    Sample 8, P-Type                & 441.9\pm23.5    & 5.0\pm0.3     & 7.7\pm4.6     & 37.3\pm0.8  \\
-    Sample 12, N-Type               & 171.7\pm2.7     & -2.1\pm0.1    & 22.6\pm4.9    & 7.3\pm0.4   \\
-    Sample 18, N-Type (Irradiated)  & 1978.6\pm110.3   & 8.6\pm0.8  & 12.4\pm37.5   & 58.0\pm3.0    \\
+    Sample 8, P-Type                & 441.9$\pm$23.5    & 5.0$\pm$0.3     & 7.7$\pm$4.6     & 37.3$\pm$0.8  \\
+    Sample 12, N-Type               & 171.7$\pm$2.7     & -2.1$\pm$0.1    & 22.6$\pm$4.9    & 7.3$\pm$0.4   \\
+    Sample 18, N-Type (Irradiated)  & 1978.6$\pm$110.3   & 8.6$\pm$0.8  & 12.4$\pm$37.5   & 58.0$\pm$3.0    \\
     \bottomrule
 \end{tabular}
 \end{table}
@@ -113,11 +113,11 @@ It is clear that the radiation damage of the n-doped diode causes an increase in
   \centering
   \begin{tabular}{lll}
     \toprule
-    Sample type         & $V_{fd}$                 & $I(V_{fd})$ \\
+    Sample type         & $V_{fd}$ & $I(V_{fd})$ \\
     \midrule
-    P-type              & $74.4 \pm 2.1 \si{V}$   &           \\
-    N-type              & $25.2 \pm 0.2 \si{V}$  &             \\
-    N-type (irradiated) & $63.0 \pm 2.9 \si{V}$ &             \\
+    P-type              & $74.4 \pm 2.1$ V   &           \\
+    N-type              & $25.2 \pm 0.2$ V   &           \\
+    N-type (irradiated) & $63.0 \pm 2.9$ V   &           \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -128,7 +128,7 @@ It is clear that the radiation damage of the n-doped diode causes an increase in
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{./figures/cv.pdf}  
-  \caption{Capacitance $C$ vs.\ applied voltage $V$ for the three studied samples. Each sample was measured three times. Note that the absolute values of the capacitance proofed to be unreliable in between consecutive measurements. The full depletion voltage $V_{fd}$ was unaffected by this circumstance and was specified by the intersection point of the linear fits of the rising and the plateaued region.}\label{fig:cv}
+  \caption{Capacitance $C$ vs. applied voltage $V$ for the three studied samples. Each sample was measured three times. Note that the absolute values of the capacitance proofed to be unreliable in between consecutive measurements. The full depletion voltage $V_{fd}$ was unaffected by this circumstance and was specified by the intersection point of the linear fits of the rising and the plateaued region.}\label{fig:cv}
 \end{figure}
 
 Figure~\ref{fig:iv} shows the diodes' $I$-$V$ curves where the shaded area represent the spread observed in the three measurements.
