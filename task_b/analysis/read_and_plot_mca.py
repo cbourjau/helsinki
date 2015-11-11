@@ -30,7 +30,7 @@ if(__name__ == '__main__'):
     for f in file_names:
         data,live_time = read_mca(f)
 
-        plt.step(range(len(data)),data,where='mid',label= f)
+        plt.step(range(len(data)),data,where='mid',label= "%s live time %f s"%(f,live_time))
     plt.legend()
     plt.xlabel("Channel",size=20)
     plt.ylabel("Count",size=20)
