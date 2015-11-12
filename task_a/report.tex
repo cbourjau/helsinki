@@ -13,6 +13,7 @@ url=true,
 doi=true,
 eprint=false
 ]{biblatex}
+\usepackage{geometry}
 
 \addbibresource{../sources.bib}
 
@@ -64,7 +65,7 @@ where $A$ is the area of one of the boundaries of the depleted region. Since the
 \end{equation}
 
 However, due to thermal excitations within the depleted region, a leakage current $I(V)$ is present whenever a voltage is applied to the diode.
-At full depletion, the leakage current only depends on the rate at which electron-hole pairs are generated. Thus, $I(V)$ exhibits a plateau for $V>V_{fd}$.
+At full depletion, the leakage current only depends on the rate at which electron-hole pairs are generated. Thus, $I(V)$ exhibits a plateau for $V>V_{fd}$. \\
 
 
 \section*{Samples and measurement}
@@ -88,7 +89,7 @@ However, large deviations between the successive measurements were observed for 
 Discussions with more experienced collegues indicated that the equipment has known inaccuracies when measuring small capacitances of order of $\sim pF$. The absolute scale of the capacitance is unreliable, but the shape is reproducible between different measurements.
 $V_{fd}$ is estimated by fitting linear functions to the rising and plateaued regions. One quarter of the available datapoints were chosen for each fit such that the slope was maximized (minimized) for the undepleted (depleted) region. Fit results are given in \ref{tab:fits}.
 
-\begin{table}[]
+\begin{table}[h]
 \centering
 \caption{Linear fit parameters for two sections of the CV curves of each sample. Slopes are given in units of $10^{-6}pF^{-2}V^{-1}$ and intercepts are in units of $10^{-3}pF^{-2}$.}\label{tab:fits}
 \begin{tabular}{lllll}
@@ -113,11 +114,11 @@ It is clear that the radiation damage of the n-doped diode causes an increase in
   \centering
   \begin{tabular}{lll}
     \toprule
-    Sample type         & $V_{fd}$ & $I(V_{fd})$ \\
+    Sample type         & $V_{fd}$  \\
     \midrule
-    Sample 8, P-Type              & $74.4 \pm 2.1$ V   &    VALUE       \\
-    Sample 12, N-Type              & $25.2 \pm 0.2$ V   &    VALUE       \\
-    Sample 18, N-Type (Irradiated) & $63.0 \pm 2.9$ V   &    VALUE       \\
+    Sample 8, P-Type              & $74.4 \pm 2.1$ V       \\
+    Sample 12, N-Type              & $25.2 \pm 0.2$ V      \\
+    Sample 18, N-Type (Irradiated) & $63.0 \pm 2.9$ V      \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -134,8 +135,7 @@ It is clear that the radiation damage of the n-doped diode causes an increase in
 Figure~\ref{fig:iv} shows the diodes' $I$-$V$ curves where the shaded area represent the spread observed in the three measurements.
 The voltage ranges are identical with the ones used in the $C$-$V$ measurement.
 The flattening of the current $I$ for $V>V_{fd}$ can be seen clearly in the n-doped samples.
-Furthermore, the effect of the radiation damage is striking: The leakage current increased by about three orders of magnitude compared to the non-irradiated n-typed diode.
-The results for $V_{fd}$ and $I(V_{fd})$  are summarized in table~\ref{tab:results}.
+Furthermore, the effect of the radiation damage is striking: The leakage current increased by about three orders of magnitude compared to the non-irradiated n-typed diode. The results for $V_{fd}$ are summarized in table~\ref{tab:results}.
 
 \begin{figure}
   \centering
