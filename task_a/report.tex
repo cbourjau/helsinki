@@ -64,7 +64,7 @@ where $A$ is the area of one of the boundaries of the depleted region. Since the
    C_{fd} = A ~ \sqrt{\frac{\epsilon_0 ~ \epsilon_r ~q ~ N_{eff}}{2 ~ V}}
 \end{equation}
 
-However, due to thermal excitations within the depleted region, a leakage current $I(V)$ is present whenever a voltage is applied to the diode.
+However, due to thermal excitations within the depleted region, a leakage current is present whenever a voltage is applied to the diode.
 At full depletion, the leakage current only depends on the rate at which electron-hole pairs are generated. Thus, $I(V)$ exhibits a plateau for $V>V_{fd}$. \\
 
 
@@ -83,11 +83,14 @@ The diodes were scanned over a limited voltage range in order to avoid the creat
 
 \section*{Results}
 
-In Figure \ref{fig:cv} the diodes' inverse squared capacitance, $\frac{1}{C^{2}}$ and the applied voltage $V$ is displayed.
+In Figure \ref{fig:cv} the diodes' inverse squared capacitance, $\frac{1}{C^{2}}$, and the applied voltage $V$ are displayed.
 A plateau of $1/C^2$ can be observed for all three diodes.
 However, large deviations between the successive measurements were observed for the p-typed diode. These might have been caused by residual charges slowly draining in between successive measurements.
-Discussions with more experienced collegues indicated that the equipment has known inaccuracies when measuring small capacitances of order of $\sim pF$. The absolute scale of the capacitance is unreliable, but the shape is reproducible between different measurements.
-$V_{fd}$ is estimated by fitting linear functions to the rising and plateaued regions. One quarter of the available datapoints were chosen for each fit such that the slope was maximized (minimized) for the undepleted (depleted) region. Fit results are given in \ref{tab:fits}.
+Discussions with more experienced collegues indicated that the equipment has known inaccuracies when measuring small capacitances of order of $\sim pF$. Over the course of multiple measurements, the capacitance values may drift, causing a systematic error. Regardless, the shape of the curve is reproducible with consistent values of the depletion voltages.
+Three measurements were taken of each sample to measure both the capacitance and the leakage current. The mean and root-mean-square errors are used in the fitting procedure. 
+$V_{fd}$ is estimated by fitting linear functions to the rising and plateaued regions. One quarter of the available datapoints were chosen for each fit such that the slope was maximized (minimized) for the undepleted (depleted) region. 
+Fitting was performed using curve\textunderscore fit, a nonlinear least squares optimization method from the SciPy Optimize package \cite{scipy_curvefit}. Errors on fit parameters are estimated using the output covariance matrix of the same function. 
+Fit results are given in \ref{tab:fits}. 
 
 \begin{table}[h]
 \centering
@@ -106,17 +109,17 @@ $V_{fd}$ is estimated by fitting linear functions to the rising and plateaued re
 \end{table}
 
 The intersection of the two functions for each sample is defined as the full depletion voltage $V_{fd}$ of that sample.
-It is clear that the radiation damage of the n-doped diode causes an increase in the depletion voltage from $25.16\pm0.20$ V (not irradiated) to $63.04\pm2.90$ V (irradiated).
+It is clear that the radiation damage of the n-doped diode is correlated with an increase in the depletion voltage from $25.16\pm0.20$ V (not irradiated) to $63.04\pm2.90$ V (irradiated).
 
 
 \begin{table}
-  \caption{Summary of measured values at the point of full depletion. The capacitance is not shown since the absolute value proved to be unreliable.}\label{tab:results}
+  \caption{Summary of measured value of the voltage at full depletion.}\label{tab:results}
   \centering
   \begin{tabular}{lll}
     \toprule
-    Sample type         & $V_{fd}$  \\
+    Sample type                    & $V_{fd}$  \\
     \midrule
-    Sample 8, P-Type              & $74.4 \pm 2.1$ V       \\
+    Sample 8, P-Type               & $74.4 \pm 2.1$ V       \\
     Sample 12, N-Type              & $25.2 \pm 0.2$ V      \\
     Sample 18, N-Type (Irradiated) & $63.0 \pm 2.9$ V      \\
     \bottomrule
@@ -129,13 +132,13 @@ It is clear that the radiation damage of the n-doped diode causes an increase in
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{./figures/cv.pdf}  
-  \caption{Capacitance $C$ vs. applied voltage $V$ for the three studied samples. Each sample was measured three times. Note that the absolute values of the capacitance proofed to be unreliable in between consecutive measurements. The full depletion voltage $V_{fd}$ was unaffected by this circumstance and was specified by the intersection point of the linear fits of the rising and the plateaued region.}\label{fig:cv}
+  \caption{Capacitance $C$ vs. applied voltage $V$ for the three studied samples. Each sample was measured three times. Note that the values of the capacitance tend to drift over time, resulting in a systematic shift of later values relative to earlier measurements. This drift was included by using the root-mean-square error of three independent measurements during the fit procedure. The full depletion voltage $V_{fd}$ is specified by the intersection point of the linear fits of the rising and the plateaued region.}\label{fig:cv}
 \end{figure}
 
 Figure~\ref{fig:iv} shows the diodes' $I$-$V$ curves where the shaded area represent the spread observed in the three measurements.
 The voltage ranges are identical with the ones used in the $C$-$V$ measurement.
-The flattening of the current $I$ for $V>V_{fd}$ can be seen clearly in the n-doped samples.
-Furthermore, the effect of the radiation damage is striking: The leakage current increased by about three orders of magnitude compared to the non-irradiated n-typed diode. The results for $V_{fd}$ are summarized in table~\ref{tab:results}.
+The flattening of the current for $V>V_{fd}$ can be seen clearly in the n-doped samples.
+Furthermore, the effect of the radiation damage is striking: The leakage current of the irradiated n-type diode is measured to be about three orders of magnitude larger than the non-irradiated n-typed diode. The results for $V_{fd}$ are summarized in table~\ref{tab:results}.
 
 \begin{figure}
   \centering
@@ -149,9 +152,8 @@ Furthermore, the effect of the radiation damage is striking: The leakage current
 \label{sec:summary}
 
 The $C$-$V$ and $I$-$V$ curves of three different diodes were successfully measured.
-While the scale of the capacitance $C$ was found to not be reliable, their shapes were reproducible in repeated measurements.
 Based on these shapes it was possible to determine the full depletion voltage $V_{fd}$ for each diode and to observe the plateau in both curves for $V>V_{fd}$.
-Radiation damage was found to cause an increase in $V_{fd}$ by a factor of $\sim 3$ and of the leakage current $I$ by three orders of magnitude.
+Radiation damage was found to be correlated to an increase in $V_{fd}$ by a factor of $\sim 3$ and of the leakage current $I$ by three orders of magnitude.
 This significant increase of the leakage current causes a deterioration of the signal-to-noise ratio in particle detectors.
 
 \printbibliography

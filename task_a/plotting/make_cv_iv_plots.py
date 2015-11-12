@@ -1,0 +1,198 @@
+#!/usr/bin/python
+import glob, numpy, os
+from matplotlib import pyplot
+
+params = {'text.usetex': False,'font.size':10}
+pyplot.rcParams.update(params)
+
+from functions import *
+
+import scipy
+from scipy import stats
+
+datafiles = glob.glob("../data/cv_iv_plots/cv_iv_plots/*.txt")
+datafiles.sort()
+
+trees = {}
+for filename in datafiles:
+    lines = open(filename).readlines()
+    headers = lines[1].replace(r'%', '').split()
+
+    data = {}
+    for i in range(len(headers)):
+        data[headers[i]] = []
+        
+    for line in lines[2:]:
+        for i in range(len(headers)):    
+            data[headers[i]].append(float(line.split()[i]))
+          
+    for i in range(len(headers)):
+        data[headers[i]] = numpy.array(data[headers[i]])
+
+    trees[os.path.basename(filename).replace(".txt", "")] = data
+
+#################################################################
+# make the plot of the stuff
+#################################################################
+# Do the CV stuff first by plotting the 1/Capacitance^2 vs Voltage
+cv_data = {}
+iv_data = {}
+colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', '0.75', '0.50', '0.25']
+treenames = trees.keys()
+treenames.sort()
+for treename in treenames:
+    name = treename.split("_")[0]
+    data = trees[treename]
+    if "CV" in treename:
+        if not name in cv_data.keys(): cv_data[name] = data
+        for key in cv_data[name].keys():
+            cv_data[name][key] = numpy.append(cv_data[name][key],data[key])
+    else:
+        if not name in iv_data.keys(): iv_data[name] = data
+        for key in iv_data[name].keys():
+            iv_data[name][key] = numpy.append(iv_data[name][key],data[key])
+
+
+
+pyplot.figure()
+color_cv = 0
+depletion_voltage = {}
+print cv_data.keys()
+for thing in ["sample8ptype", "sample18ntype", "sample12ntype"]:
+    volts = cv_data[thing]["Voltage(V)"]
+    caps_mean = []
+    caps_std = []
+
+    diff = (numpy.max(volts)-numpy.min(volts))/(len(volts)/3)*0.5
+    uniquevolts = numpy.unique(numpy.round(volts,1))
+    uniquevolts.sort()
+    uniquevolts = uniquevolts
+    newvolts = []
+    for v in uniquevolts:
+        a = volts[:-1] >= v-diff
+        b = volts[:-1] <= v+diff
+        cut = numpy.logical_and(a,b)
+        this_caps = numpy.power(cv_data[thing]["Capacitance(pF)"][:-1][cut],-2)
+
+        newvolts.append(v)
+        caps_mean.append(numpy.mean(this_caps))
+        caps_std.append(numpy.std(this_caps))
+    uniquevolts = numpy.array(newvolts)
+    caps_mean = numpy.array(caps_mean)
+    caps_std = numpy.array(caps_std)
+
+    pyplot.scatter(cv_data[thing]["Voltage(V)"][:-1],
+                   numpy.power(cv_data[thing]["Capacitance(pF)"][:-1],-2),
+                   label = thing.replace("sample", "Sample ").replace("ptype", " (p-type)").replace("ntype", " (n-type)").replace("12 (n-type)", "12 (n-type, irradiated)"),
+                   color=colors[color_cv])
+
+    npoints = len(uniquevolts)
+    indicies = numpy.argsort(cv_data[thing]["Voltage(V)"])
+
+    volts = [cv_data[thing]["Voltage(V)"][i] for i in indicies]
+    caps = [numpy.power(cv_data[thing]["Capacitance(pF)"],-2)[i] for i in indicies]
+    p1, std1 = fit_slope_min(uniquevolts, caps_mean, caps_std, int(npoints/3.))
+    slope1 = p1[0]
+    intercept1 = p1[1]
+    #print cv_data[thing]["Voltage(V)"][-int(npoints/3.):], slope1*cv_data[thing]["Voltage(V)"][-int(npoints/3.):]+intercept1
+    pyplot.plot(cv_data[thing]["Voltage(V)"][-int(npoints/3.):], slope1*cv_data[thing]["Voltage(V)"][-int(npoints/3.):]+intercept1, 
+                color=colors[color_cv])
+    #print "\t", volts[:4], rvalue**2
+    p2, std2 = fit_slope_max(uniquevolts, caps_mean, caps_std, int(npoints/3.))
+    slope2 = p2[0]
+    intercept2 = p2[1]
+    pyplot.plot(cv_data[thing]["Voltage(V)"][int(npoints/3.):], slope2*cv_data[thing]["Voltage(V)"][int(npoints/3.):]+intercept2, 
+                color=colors[color_cv])
+
+    print thing 
+    stuff1 = numpy.transpose(numpy.array([p1, std1]))
+    stuff2 = numpy.transpose(numpy.array([p2, std2]))
+    fitstring1 = "(%5.2f + %5.2f)*1e6*V + (%5.2f + %5.2f)*1e3" % (p1[0]*1e6, std1[0]*1e6, p1[1]*1e3, std1[1]*1e3)
+    fitstring2 = "(%5.2f + %5.2f)*1e6*V + (%5.2f + %5.2f)*1e3" % (p2[0]*1e6, std2[0]*1e6, p2[1]*1e3, std2[1]*1e3)
+
+    print "\t\tFit 1 ", fitstring1
+    print "\t\tFit 2 ", fitstring2
+    #print "\t", volts[-4:], rvalue**2
+
+    depletion_voltage[thing] = find_transition_point(p1, std1, p2, std2)
+    print thing, depletion_voltage[thing]
+
+    color_cv = color_cv+1
+pyplot.legend()
+pyplot.ylim(0, 0.09)
+pyplot.xlim(0, 200)
+pyplot.grid()
+pyplot.ylabel(r'1/Capacitance$^2$ (p$F^{-2}$)')
+pyplot.xlabel(r'Voltage (V)')
+pyplot.savefig("../figures/cv.pdf")
+
+
+
+color_iv = 0
+f, (ax1, ax2, ax3) = pyplot.subplots(3, sharex=True, sharey=False)
+axes = [ax1, ax2, ax3]
+f.subplots_adjust(hspace=0)
+for thing in ["sample8ptype", "sample18ntype", "sample12ntype"]:
+    ax = axes[color_iv]
+    volts = iv_data[thing]["Voltage(V)"][1:-1]
+    current = []
+    current_std = []
+    
+    diff = (numpy.max(volts)-numpy.min(volts))/(len(volts)/3)
+    uniquevolts = numpy.unique(volts)
+    uniquevolts.sort()
+    uniquevolts = uniquevolts[3:]
+    for v in uniquevolts:
+        a = volts > v-diff
+        b = volts < v+diff
+        cut = numpy.logical_and(a,b)
+        this_current = iv_data[thing]["TotalCurrent(A)"][cut]
+        current.append(numpy.mean(this_current))
+        current_std.append(numpy.array([numpy.mean(this_current)-numpy.min(this_current),
+                                        numpy.max(this_current)-numpy.mean(this_current)]))
+    current = numpy.array(current)
+    current_std = numpy.array(current_std)
+    current_std = numpy.transpose(current_std)
+
+    label = "Current (%s)"
+    units = "A"
+    estimate = numpy.log10(numpy.max(current)) 
+    if estimate > -9 and estimate < -6:
+        current *= 1e9
+        current_std *= 1e9
+        units = "nA"
+    elif estimate > -6 and estimate < -3:
+        current *= 1e6
+        current_std *= 1e6
+        units = r'$\mu$A'
+    elif estimate > -3 and estimate < -0:
+        current *= 1e3
+        current_std *= 1e3
+        units = "mA"
+    
+    ax.scatter(uniquevolts,
+               current,
+               label = thing.replace("sample", "Sample ").replace("ptype", " (p-type)").replace("ntype", " (n-type)").replace("12 (n-type)", "12 (n-type, irradiated)"),
+               color=colors[color_iv])
+    ax.fill_between(uniquevolts, current-current_std[0,:], current+current_std[1,:],
+                    #label = thing.replace("sample", "Sample ").replace("ptype", " (p-type)").replace("ntype", " (n-type)").replace("12 (n-type)", "12 (n-type, irradiated)"),
+                    alpha=0.5,
+                    color=colors[color_iv])
+    ax.axvline(depletion_voltage[thing][0], color=colors[color_iv], linewidth=2, linestyle='--')
+    ax.text(depletion_voltage[thing][0]*1.05, 
+            numpy.min(current)*1.05, 
+            r'$V_{FD}$ = '+("%4.2f "%depletion_voltage[thing][0]) + ("$\pm$ %4.2f V"%(depletion_voltage[thing][1])), color=colors[color_iv])#, weight='extra bold')
+    color_iv = color_iv+1
+    ax.legend()
+
+    ax.grid()
+
+    #ax.set_yscale('log')
+    ax.set_ylim(min(current)*0.4,
+                max(current)*1.6)
+    ax.set_ylabel(label%units)
+    ax.set_xlim(0,200)
+    ax.set_xlabel("Voltage (V)")
+pyplot.savefig("../figures/iv.pdf")
+
+
