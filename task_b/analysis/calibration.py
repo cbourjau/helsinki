@@ -54,7 +54,7 @@ peaks50 = list()
 plt.title("Gain 50")
 for i in range(len(peaksrough50)):
     peakest = peaksrough50[i]
-    mask = (channels>=(peakest-20)) & (channels<=(peakest+20))
+    mask = (channels>=(peakest-15)) & (channels<=(peakest+15))
     popt, pcov = curve_fit(gauss_function, channels[mask], data50[mask],p0 = [1000,peakest, 2.0])
     #print(popt)
     peaks50.append(popt)
@@ -69,7 +69,11 @@ peaks100 = list()
 plt.title("Gain 100")
 for i in range(len(peaksrough100)):
     peakest = peaksrough100[i]
-    mask = (channels>=(peakest-20)) & (channels<=(peakest+20))
+    if(i==0):
+        low = 5
+    else:
+        low = 15
+    mask = (channels>=(peakest-low)) & (channels<=(peakest+20))
     popt, pcov = curve_fit(gauss_function, channels[mask], data100[mask],p0 = [1000,peakest, 2.0])
     #print(popt)
     peaks100.append(popt)
