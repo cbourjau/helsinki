@@ -6,7 +6,7 @@ from utils import *
 
 calibration = pickle.load(open("../data/calibration.pkl",'r'))
 
-g = np.linspace(min(gains),200,100)
+g = np.linspace(0,200,100)
 
 chans = np.linspace(0,512,100)
 plt.figure()

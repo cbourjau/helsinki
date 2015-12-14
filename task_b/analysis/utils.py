@@ -61,7 +61,7 @@ def calibration_params(gain, calibration):#:, slopes, slope_er, intercept, inter
                         powegdn(gain,pop[0],pop[1])**2*pcov[1][1] +
                         2*powegdn(gain,pop[0],pop[1])*powegdi(gain,pop[0],pop[1])*pcov[1][0])
     intercept = calibration[100][0][1]
-    err_intercept = calibration[100][0][1]/2
+    err_intercept = calibration[100][0][1]/2.0#TODO: is this the right factor?
     return (slope,intercept),(err_slope,err_intercept)
 
 
