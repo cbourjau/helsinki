@@ -6,29 +6,7 @@ from utils import *
 
 calibration = pickle.load(open("../data/calibration.pkl",'r'))
 
-slopes = list()
-intercepts = list()
-slopes_err = list()
-intercepts_err = list()
-
-for k,v in calibration.iteritems():
-    slopes.append(v[0][0])
-    intercepts.append(v[0][1])
-    slopes_err.append(np.sqrt(v[1][0][0]))
-    intercepts_err.append(np.sqrt(v[1][1][1]))
-gains = [20,50,100]
-
-plt.figure()
-plt.errorbar(gains,slopes,yerr=slopes_err)
-plt.errorbar(gains,intercepts,yerr=intercepts_err)
-plt.xlim((0,150))
-
-
-
 g = np.linspace(min(gains),200,100)
-
-pop, pcov = curve_fit(pow, gains, slopes, p0 = [1.,-1.0], sigma = slopes_err)
-plt.plot(g,pow(g,pop[0],pop[1]))
 
 chans = np.linspace(0,512,100)
 plt.figure()
