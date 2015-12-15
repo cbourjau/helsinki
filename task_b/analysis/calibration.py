@@ -198,9 +198,9 @@ def calibration_params(gain, slopes, slope_er, intercept, intercept_er):
 import pickle
 calibration = dict()
 
-calibration["gain20"] = (popt20,pcov20)
-calibration["gain50"] = (popt50,pcov50)
-calibration["gain100"] = (popt100,pcov100)
+calibration[20] = (popt20,pcov20)
+calibration[50] = (popt50,pcov50)
+calibration[100] = (popt100,pcov100)
 
 f = open("../data/calibration.pkl",'w')
 pickle.dump(calibration,f)
@@ -225,15 +225,15 @@ plt.ylabel("infered Voltage [mV]")
 
 plt.figure(figsize=figsize)
 perr =  [np.sqrt(pcov20)[0][0],np.sqrt(pcov20)[1][1]]
-f,err =chantoV(chan,calibration['gain20'][0],perr)
+f,err =chantoV(chan,calibration[20][0],perr)
 plt.errorbar(chan,f,err,label="Gain 20")
 perr =  [np.sqrt(pcov50)[0][0],np.sqrt(pcov50)[1][1]]
-f,err =chantoV(chan,calibration['gain50'][0],perr)
+f,err =chantoV(chan,calibration[50][0],perr)
 plt.errorbar(chan,f,err,label="Gain 50")
 
 
 perr =  [np.sqrt(pcov100)[0][0],np.sqrt(pcov100)[1][1]]
-f,err =chantoV(chan,calibration['gain100'][0],perr)
+f,err =chantoV(chan,calibration[100][0],perr)
 plt.errorbar(chan,f,err,label="Gain 100")
 plt.xlabel("channel")
 plt.ylabel("infered Voltage [mV]")
