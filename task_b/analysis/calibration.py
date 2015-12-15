@@ -133,9 +133,9 @@ plt.legend()
 #Saving the calibraton in a pickle file
 import pickle
 calibration = dict()
-calibration['gain20'] = popt20
-calibration['gain50'] = popt50
-calibration['gain100'] = popt100
+calibration['gain20'] = [popt20, pcov20]
+calibration['gain50'] = [popt50, pcov50]
+calibration['gain100'] = [popt100, pcov100]
 
 f = open("../data/calibration.pkl",'w')
 pickle.dump(calibration,f)
