@@ -55,7 +55,7 @@ def calibration_params(gain, calibration):#:, slopes, slope_er, intercept, inter
 
     pop, pcov = curve_fit(pow, calibration.keys(), slopes, p0 = [1.,-1.0], sigma = slopes_err)
     slope = pow(gain,pop[0],pop[1])
-
+    print(pop,np.sqrt(abs(pcov)))
 
     err_slope = np.sqrt(powegdi(gain,pop[0],pop[1])**2*pcov[0][0] +
                         powegdn(gain,pop[0],pop[1])**2*pcov[1][1] +

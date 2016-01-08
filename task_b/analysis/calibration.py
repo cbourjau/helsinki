@@ -122,6 +122,34 @@ popt20, pcov20 = curve_fit(lin_fun, np.array(peaks20[1]), np.array(pulseHeights2
 popt50, pcov50 = curve_fit(lin_fun, np.array(peaks50[1]), np.array(pulseHeights50), p0 = [1/10.0,0],sigma = np.ones(5)*pulseheight_er)
 popt100, pcov100 = curve_fit(lin_fun, np.array(peaks100[1]), np.array(pulseHeights100), p0 = [1/10.0,0],sigma = np.ones(4)*pulseheight_er)
 
+print("GAIN=20")
+s = ''
+s2 = ''
+for i in range(len(pulseHeights20)):
+    s+='& %g '%pulseHeights20[i]
+    s2+='& %g '%peaks20[1][i]
+print(s)
+print(s2)
+s = ''
+s2 = ''
+
+print("GAIN=50")
+for i in range(len(pulseHeights50)):
+    s+='& %g '%pulseHeights50[i]
+    s2+='& %g '%peaks50[1][i]
+print(s)
+print(s2)
+
+s = ''
+s2 = ''
+print("GAIN=100")
+for i in range(len(pulseHeights100)):
+    s+='& %g '%pulseHeights100[i]
+    s2+='& %g '%peaks100[1][i]
+print(s)
+print(s2)
+
+
 plt.figure(figsize=figsize)
 x = np.linspace(0,512,100)
 plt.errorbar(peaks20[1],pulseHeights20,yerr=np.ones(5)*pulseheight_er,color = 'blue',label = "Gain 20, mV/channel %f"%popt20[0],ls = 'None')
